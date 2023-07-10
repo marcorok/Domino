@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoClient", "PlayingWithGraphicsFramework\DominoClient.csproj", "{C9D7501F-4162-4B58-8D37-D5675824A62F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoClient", "DominoClient\DominoClient.csproj", "{C9D7501F-4162-4B58-8D37-D5675824A62F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoLogic", "DominoLogic\DominoLogic.csproj", "{A06D633C-95F9-43FA-8BE3-0430131C0D2C}"
 EndProject
