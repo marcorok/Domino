@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C9D7501F-4162-4B58-8D37-D5675824A62F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PlayingWithGraphicsFramework</RootNamespace>
-    <AssemblyName>PlayingWithGraphicsFramework</AssemblyName>
+    <RootNamespace>DominoClient</RootNamespace>
+    <AssemblyName>DominoClient</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
