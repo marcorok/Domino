@@ -8,7 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlayingWithGraphicsFramework.GraphicElements.AnchorPointsFactories
+namespace DominoClient.GraphicElements.AnchorPointsFactories
 {
     internal class TileOnSidePositionAnchorPointsFactory : IAnchorPointsFactory
     {

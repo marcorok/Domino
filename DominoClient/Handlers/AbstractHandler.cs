@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlayingWithGraphicsFramework.Handlers
+namespace DominoClient.Handlers
 {
     internal abstract class AbstractHandler : IHandler
     {

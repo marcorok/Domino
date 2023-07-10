@@ -1,5 +1,5 @@
 ﻿using DominoGame.GameElements;
-using PlayingWithGraphicsFramework.GraphicElements.AnchorPointsFactories;
+using DominoClient.GraphicElements.AnchorPointsFactories;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlayingWithGraphicsFramework.GraphicElements.anchorPointsFactories
+namespace DominoClient.GraphicElements.anchorPointsFactories
 {
 
     internal class TileNormalPositionAnchorPointsFactory : IAnchorPointsFactory

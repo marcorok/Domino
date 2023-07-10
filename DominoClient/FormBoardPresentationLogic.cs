@@ -1,6 +1,6 @@
 ﻿using DominoGame.GameElements;
-using PlayingWithGraphicsFramework.Properties;
-using PlayingWithGraphicsFramework.GraphicElements;
+using DominoClient.Properties;
+using DominoClient.GraphicElements;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PlayingWithGraphicsFramework
+namespace DominoClient
 {
     public partial class FormBoard : Form
     {

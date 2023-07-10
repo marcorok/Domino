@@ -1,11 +1,11 @@
-﻿using PlayingWithGraphicsFramework.GraphicElements;
+﻿using DominoClient.GraphicElements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlayingWithGraphicsFramework.Handlers
+namespace DominoClient.Handlers
 {
     internal class BoardTilePositioningRequest
     {

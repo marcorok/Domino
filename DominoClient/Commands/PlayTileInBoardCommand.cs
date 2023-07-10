@@ -1,13 +1,13 @@
 ﻿using DominoGame.GameElements;
-using PlayingWithGraphicsFramework.GraphicElements;
-using PlayingWithGraphicsFramework.Handlers;
+using DominoClient.GraphicElements;
+using DominoClient.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlayingWithGraphicsFramework.Commands
+namespace DominoClient.Commands
 {
     internal class PlayTileInBoardCommand : BaseCommand
     {

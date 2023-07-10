@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PlayingWithGraphicsFramework
+namespace DominoClient
 {
     partial class FormBoard
     {
