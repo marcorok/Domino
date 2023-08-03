@@ -24,11 +24,13 @@ namespace DominoClient
     {
 
         private readonly bool SHOW_ANCHOR_POINTS_IN_DOMINO_TILES = bool.Parse(ConfigurationManager.AppSettings["ShowAnchorPointsOnDominoTiles"]);
-
-        private bool _isDragging = false;
-        private DominoTile _movingElement = null;
-        private Rectangle _rotateControl;
+        internal DominoTile MovingElement { get; private set; }
+        
         private Rectangle _boardArea;
+        private bool _isDragging = false;
+        private Rectangle _rotateControl;
+        private Point _tilePositionBeforeMove;
+
         private Stack<BaseCommand> _commandsHistory = new Stack<BaseCommand>();
 
         public FormBoard()
@@ -57,19 +59,19 @@ namespace DominoClient
             if (!_isDragging && clickedDT != null)
             {
                 _isDragging = true;
-                _movingElement = clickedDT;
-                _movingElement.SavePositionBeforeMove();
+                MovingElement = clickedDT;
+                _tilePositionBeforeMove = new Point(clickedDT.Rect.X, clickedDT.Rect.Y);
             }
             else if (_rotateControl.Contains(mousePosition))
             {
-                BaseCommand c = new RotateTileCommand(_movingElement, _board, _p1, this);
+                BaseCommand c = new RotateTileCommand(this);
                 _commandsHistory.Push(c);
                 c.Execute();
             }
             else
             {
                 _rotateControl = new Rectangle();
-                _movingElement = null;
+                MovingElement = null;
             }
         }
     
@@ -78,17 +80,17 @@ namespace DominoClient
             if (_isDragging)
             {
                 //update graphic element positions
-                _movingElement.UpdatePosition(e.Location);
+                MovingElement.UpdatePositionOnMoveWithCenteredMousePoint(e.Location);
                 
             }
         }
-
+         
         private void FormBoard_MouseUp(object sender, MouseEventArgs e)
         {
             if (_isDragging)
             {
                 _isDragging = false;
-                BaseCommand c = new PlayTileInBoardCommand(_movingElement, _board, _p1, this);
+                BaseCommand c = new PlayTileInBoardCommand(this, _tilePositionBeforeMove);
                 _commandsHistory.Push(c);
                 c.Execute();
             }
@@ -126,7 +128,7 @@ namespace DominoClient
         private void PaintSelectionBorder(Graphics g)
         {
             Pen pen = Pens.Blue;
-            g.DrawRectangle(pen, _movingElement.Rect);
+            g.DrawRectangle(pen, MovingElement.Rect);
             //g.DrawRectangle(pen, _movingElement.Position.X, _movingElement.Position.Y, _movingElement.Width, _movingElement.Height);
         }
 

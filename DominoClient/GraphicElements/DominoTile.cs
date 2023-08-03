@@ -28,9 +28,6 @@ namespace DominoClient.GraphicElements
         internal Point Position { get => _position; }
         private Point _position = new Point();
 
-        private Point _positionBeforeMove;
-        private int _rotationAngleBeforeMove;
-
         internal int RotationAngle = 0;
 
         internal bool Active = false;
@@ -95,28 +92,22 @@ namespace DominoClient.GraphicElements
             CreateAnchorPoints();
         }
 
-        internal void UpdatePosition(Point newLocation)
+        internal void UpdatePosition(Point originalPosition)
+        {
+            _position.X = originalPosition.X;
+            _position.Y = originalPosition.Y;
+            _rect.X = Position.X;
+            _rect.Y = Position.Y;
+            RefreshPosition();
+        }
+
+        internal void UpdatePositionOnMoveWithCenteredMousePoint(Point newLocation)
         {
             _position.X = newLocation.X - (Width / 2);
             _position.Y = newLocation.Y - (Height / 2);
             _rect.X = Position.X;
             _rect.Y = Position.Y;
-            UpdateRectPosition();
-            UpdateAnchorPointsPosition();
-        }
-
-        internal void SavePositionBeforeMove()
-        {
-            _positionBeforeMove = _position;
-            _rotationAngleBeforeMove = RotationAngle;
-        }
-
-        internal void ResetPositionToPositionBeforeMove()
-        {
-            _position = _positionBeforeMove;
-            RotationAngle = _rotationAngleBeforeMove;
-            UpdateRectPosition();
-            UpdateAnchorPointsPosition();
+            RefreshPosition();
         }
 
         internal void RefreshPosition() {

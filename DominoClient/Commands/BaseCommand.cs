@@ -15,11 +15,11 @@ namespace DominoClient.Commands
         protected Player _player;
         protected FormBoard _boardForm;
 
-        public BaseCommand(DominoTile graphicTile, Board board, Player player, FormBoard boardForm)
+        public BaseCommand(FormBoard boardForm)
         {
-            _graphicTile = graphicTile;
-            _board = board;
-            _player = player;
+            _graphicTile = boardForm.MovingElement;
+            _board = boardForm.Board;
+            _player = boardForm.P1;
             _boardForm = boardForm;
 
         }

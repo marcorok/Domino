@@ -15,9 +15,9 @@ namespace DominoClient
     public partial class FormBoard : Form
     {
         //Board and Players
-        private Player _p1;
         private Player _p2;
-        private Board _board;
+        internal Player P1 { get; private set; }
+        internal Board Board { get; private set; }
 
         private LinkedList<DominoTile> TilesList;
 
@@ -25,12 +25,12 @@ namespace DominoClient
         {
             TilesList = new LinkedList<DominoTile>();
 
-            _p1 = new Player();
+            P1 = new Player();
             _p2 = new Player();
-            _board = new Board(_p1, _p2);
+            Board = new Board(P1, _p2);
 
             CreateBoardArea();
-            CreateCurrentPlayerTiles(_p1);
+            CreateCurrentPlayerTiles(P1);
         }
 
         private void CreateBoardArea()
@@ -122,7 +122,7 @@ namespace DominoClient
 
                 g.DrawImage(dt.TileImage, newLocation.X, newLocation.Y, dt.Width, dt.Height);
                 g.ResetTransform();
-                if (dt == _movingElement)
+                if (dt == MovingElement)
                 {
                     PaintSelectionBorder(g);
                     _rotateControl = PaintRotateControl(pe, dt);
@@ -137,6 +137,10 @@ namespace DominoClient
                     }
                 }
             }
+        }
+
+        internal bool IsTileInBoardArea(DominoTile dt) {
+            return _boardArea.Contains(dt.Rect);
         }
 
         /*Just for debugging purposes*/

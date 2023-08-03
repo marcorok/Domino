@@ -12,7 +12,7 @@ namespace DominoClient.Commands
     {
         private int _originalRotation;
 
-        public RotateTileCommand(DominoTile graphicTile, Board board, Player player, FormBoard boardForm) : base(graphicTile, board, player, boardForm)
+        public RotateTileCommand(FormBoard boardForm) : base(boardForm)
         {
             _originalRotation = _graphicTile.RotationAngle;
         }

@@ -20,11 +20,15 @@ namespace DominoClient.Handlers
                     //relocate the tile according to the anchor point to which it was connected
                     throw new NotImplementedException();
                 }
-                else
+                else if (positioningRequest.TileToConnectWith == null && 
+                    positioningRequest.FormBoard.IsTileInBoardArea(positioningRequest.PlayedTile))
                 {
                     //Position tile in the center of the board
                     Point center = new Point(positioningRequest.FormBoard.Width / 2, positioningRequest.FormBoard.Height / 2);
-                    positioningRequest.PlayedTile.UpdatePosition(center);
+                    positioningRequest.PlayedTile.UpdatePositionOnMoveWithCenteredMousePoint(center);
+                }
+                else {
+                    return null;
                 }
             }
             return base.Handle(request);

@@ -6,13 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace DominoClient.Commands
 {
     internal class PlayTileInBoardCommand : BaseCommand
     {
-        public PlayTileInBoardCommand(DominoTile graphicTile, Board board, Player player, FormBoard formBoard) : base(graphicTile, board, player, formBoard)
+        private Point _originalPosition;
+
+        public PlayTileInBoardCommand(FormBoard formBoard, Point originalPosition) : base(formBoard)
         {
+            _originalPosition = originalPosition;
         }
 
         public override void Execute()
@@ -31,12 +35,10 @@ namespace DominoClient.Commands
                 PlayedTile = _graphicTile,
                 TileToConnectWith = null
             }) ;
-            
-            //throw new NotImplementedException();
         }
 
         public override void Undo() {
-            _graphicTile.ResetPositionToPositionBeforeMove();
+            _graphicTile.UpdatePosition(_originalPosition);
         }
     }
 }
