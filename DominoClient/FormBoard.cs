@@ -29,6 +29,7 @@ namespace DominoClient
         private DominoTile _movingElement = null;
         private Rectangle _rotateControl;
         private Rectangle _boardArea;
+        private Stack<BaseCommand> _commandsHistory = new Stack<BaseCommand>();
 
         public FormBoard()
         {
@@ -57,10 +58,13 @@ namespace DominoClient
             {
                 _isDragging = true;
                 _movingElement = clickedDT;
+                _movingElement.SavePositionBeforeMove();
             }
             else if (_rotateControl.Contains(mousePosition))
             {
-                _movingElement.RotateTile();
+                BaseCommand c = new RotateTileCommand(_movingElement, _board, _p1, this);
+                _commandsHistory.Push(c);
+                c.Execute();
             }
             else
             {
@@ -84,7 +88,9 @@ namespace DominoClient
             if (_isDragging)
             {
                 _isDragging = false;
-                new PlayTileInBoardCommand(_movingElement,_board, _p1, this).Execute();
+                BaseCommand c = new PlayTileInBoardCommand(_movingElement, _board, _p1, this);
+                _commandsHistory.Push(c);
+                c.Execute();
             }
         }
 
@@ -101,7 +107,11 @@ namespace DominoClient
 
         private void BtnUndo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Undo Test");
+            if (_commandsHistory.Count > 0)
+            {
+                BaseCommand c = _commandsHistory.Pop();
+                c?.Undo();
+            }
         }
         #endregion Events
 
@@ -109,18 +119,15 @@ namespace DominoClient
         private Rectangle PaintRotateControl(PaintEventArgs pe, DominoTile tile)
         {
             Rectangle rPlaceHolder = new Rectangle(tile.Position.X + tile.Width + 2, tile.Position.Y, 20, 20);
-            //Pen blackPen = new Pen(Color.Black, 0);
-            //pe.Graphics.DrawRectangle(blackPen, rPlaceHolder);
             pe.Graphics.DrawImage(Resources.rotate, rPlaceHolder);
             return rPlaceHolder;
         }
 
-        private void PaintSelectionBorder(PaintEventArgs pe)
+        private void PaintSelectionBorder(Graphics g)
         {
             Pen pen = Pens.Blue;
-            // Draw a rectangle with rotatePen.
-            //Rectangle rPlaceHolder = new Rectangle(location, new Size(dt.width + borderSize, dt.height + borderSize));
-            pe.Graphics.DrawRectangle(pen, _movingElement.Rect);
+            g.DrawRectangle(pen, _movingElement.Rect);
+            //g.DrawRectangle(pen, _movingElement.Position.X, _movingElement.Position.Y, _movingElement.Width, _movingElement.Height);
         }
 
         #endregion Paint related methods

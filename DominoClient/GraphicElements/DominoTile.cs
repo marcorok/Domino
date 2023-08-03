@@ -25,13 +25,16 @@ namespace DominoClient.GraphicElements
         internal int BottomSpace { get { return BOTTOM_SPACE; } }
         internal int SideSpace { get { return SIDE_SPACE; } }
         internal LinkedList<AnchorPoint> AnchorPoints { get; set; }
-        internal Point Position { get => _position;}
+        internal Point Position { get => _position; }
         private Point _position = new Point();
 
+        private Point _positionBeforeMove;
+        private int _rotationAngleBeforeMove;
+
         internal int RotationAngle = 0;
-        
+
         internal bool Active = false;
-        
+
         private Rectangle _rect;
         internal Rectangle Rect { get => _rect; }
 
@@ -53,7 +56,8 @@ namespace DominoClient.GraphicElements
             {
                 factory = new TileNormalPositionAnchorPointsFactory();
             }
-            else {
+            else
+            {
                 factory = new TileOnSidePositionAnchorPointsFactory();
             }
             AnchorPoints = factory.CreateAnchorPoints(this);
@@ -63,15 +67,7 @@ namespace DominoClient.GraphicElements
         {
             //Update rotationAngle
             RotationAngle = RotationAngle == 270 ? 0 : RotationAngle + 90;
-
-            //Invert width and height
-            int width = _rect.Width;
-            int height = _rect.Height;
-            _rect.Width = height;
-            _rect.Height = width;
-
-            UpdateRectPosition();
-            UpdateAnchorPointsPosition();
+            RefreshPosition();
         }
 
         internal void UpdateRectPosition()
@@ -81,11 +77,15 @@ namespace DominoClient.GraphicElements
             {
                 _rect.Y += Height / 4;
                 _rect.X -= Width / 2;
+                _rect.Width = Height;
+                _rect.Height = Width;
             }
             else
             {
                 _rect.X = Position.X;
                 _rect.Y = Position.Y;
+                _rect.Width = Width;
+                _rect.Height = Height;
             }
         }
 
@@ -101,6 +101,25 @@ namespace DominoClient.GraphicElements
             _position.Y = newLocation.Y - (Height / 2);
             _rect.X = Position.X;
             _rect.Y = Position.Y;
+            UpdateRectPosition();
+            UpdateAnchorPointsPosition();
+        }
+
+        internal void SavePositionBeforeMove()
+        {
+            _positionBeforeMove = _position;
+            _rotationAngleBeforeMove = RotationAngle;
+        }
+
+        internal void ResetPositionToPositionBeforeMove()
+        {
+            _position = _positionBeforeMove;
+            RotationAngle = _rotationAngleBeforeMove;
+            UpdateRectPosition();
+            UpdateAnchorPointsPosition();
+        }
+
+        internal void RefreshPosition() {
             UpdateRectPosition();
             UpdateAnchorPointsPosition();
         }

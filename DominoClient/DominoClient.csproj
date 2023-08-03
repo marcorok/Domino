@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\PlayTileInBoardCommand.cs" />
-    <Compile Include="Commands\UndoCommand.cs" />
+    <Compile Include="Commands\RotateTileCommand.cs" />
     <Compile Include="GraphicElements\AnchorPoint.cs" />
     <Compile Include="GraphicElements\AnchorPointsFactories\IAnchorPointsFactory.cs" />
     <Compile Include="GraphicElements\AnchorPointsFactories\TileNormalPositionAnchorPointsFactory.cs" />

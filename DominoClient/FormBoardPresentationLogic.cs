@@ -124,7 +124,7 @@ namespace DominoClient
                 g.ResetTransform();
                 if (dt == _movingElement)
                 {
-                    PaintSelectionBorder(pe);
+                    PaintSelectionBorder(g);
                     _rotateControl = PaintRotateControl(pe, dt);
                 }
 

@@ -34,5 +34,9 @@ namespace DominoClient.Commands
             
             //throw new NotImplementedException();
         }
+
+        public override void Undo() {
+            _graphicTile.ResetPositionToPositionBeforeMove();
+        }
     }
 }
