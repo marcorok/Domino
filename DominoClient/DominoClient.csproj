@@ -65,8 +65,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Handlers\AbstractHandler.cs" />
+    <Compile Include="Handlers\BoardTileApplyPlayHandler.cs" />
+    <Compile Include="Handlers\BoardTilePlayValidationHandler.cs" />
     <Compile Include="Handlers\BoardTilePositioningHandler.cs" />
-    <Compile Include="Handlers\BoardTilePositioningRequest.cs" />
+    <Compile Include="Handlers\BoardTilePlayRequest.cs" />
+    <Compile Include="Handlers\BoardTileClearSelectionHandler.cs" />
+    <Compile Include="Handlers\BoardTileSelectionRequest.cs" />
     <Compile Include="Handlers\IHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

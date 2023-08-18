@@ -12,7 +12,7 @@ namespace DominoClient.Handlers
 
         public virtual object Handle(object request) {
             if (_nextHandler != null) { 
-                return _nextHandler;
+                return _nextHandler.Handle(request);
             }
             else
             {

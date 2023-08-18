@@ -28,13 +28,20 @@ namespace DominoClient.Commands
              *  2 - Rearrage tile in the board if needed
              *  3 - Commit changes to board
              */
-            var tilePositioningHandler = new BoardTilePositioningHandler();
-            tilePositioningHandler.Handle(new BoardTilePositioningRequest
+            BoardTilePlayRequest request = new BoardTilePlayRequest
             {
                 FormBoard = _boardForm,
                 PlayedTile = _graphicTile,
                 TileToConnectWith = null
-            }) ;
+            };
+
+            var tilePlayValidationHandler = new BoardTilePlayValidationHandler();
+            var tileApplyPlayHandler = new BoardTileApplyPlayHandler();
+            var tilePositioningHandler = new BoardTilePositioningHandler();
+            var tileClearSelectionHandler = new BoardTileClearSelectionHandler();
+            tilePlayValidationHandler.SetNext(tileApplyPlayHandler).SetNext(tilePositioningHandler).SetNext(tileClearSelectionHandler);
+            tilePlayValidationHandler.Handle(request);
+            
         }
 
         public override void Undo() {

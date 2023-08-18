@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DominoClient.Handlers
 {
-    internal class BoardTilePositioningRequest
+    internal class BoardTilePlayRequest
     {
         internal DominoTile PlayedTile { get; set; }
         internal DominoTile TileToConnectWith { get; set; }

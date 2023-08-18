@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoClient", "DominoClien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoLogic", "DominoLogic\DominoLogic.csproj", "{A06D633C-95F9-43FA-8BE3-0430131C0D2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoTests", "DominoTests\DominoTests.csproj", "{C9F890B1-F540-45D8-8D6D-10D1111B158B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A06D633C-95F9-43FA-8BE3-0430131C0D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A06D633C-95F9-43FA-8BE3-0430131C0D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A06D633C-95F9-43FA-8BE3-0430131C0D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F890B1-F540-45D8-8D6D-10D1111B158B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F890B1-F540-45D8-8D6D-10D1111B158B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F890B1-F540-45D8-8D6D-10D1111B158B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F890B1-F540-45D8-8D6D-10D1111B158B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

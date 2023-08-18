@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,11 @@ namespace DominoGame.GameElements
 {
     public class Tile {
         public string TileImageName { get; }
+        private bool _isAvailableForSelection;
+        public bool IsAvailableForSelection { 
+            get => _isAvailableForSelection;
+            set => _isAvailableForSelection = _isAvailableForSelection ? value : false; }
+        
         public int ValueA { get; }
         public int ValueB { get; }
 
@@ -15,6 +21,7 @@ namespace DominoGame.GameElements
             TileImageName = tileImageName;
             ValueA = valueA;
             ValueB = valueB;
+            _isAvailableForSelection = true;
         }
 
         public override string ToString()

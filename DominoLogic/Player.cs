@@ -32,5 +32,16 @@ namespace DominoGame.GameElements
         {
             return PlayableTiles.Count; 
         }
+
+        public LinkedList<Tile> GetPlayedTiles()
+        {
+            return PlayedTiles;
+        }
+
+        internal void PlayTile(Tile t)
+        {
+            PlayableTiles.Remove(t);
+            PlayedTiles.AddLast(t);
+        }
     }
 }

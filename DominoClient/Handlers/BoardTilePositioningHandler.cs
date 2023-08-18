@@ -12,9 +12,9 @@ namespace DominoClient.Handlers
     {
         public override object Handle(object request)
         {
-            if(request is BoardTilePositioningRequest)
+            if(request is BoardTilePlayRequest)
             {
-                var positioningRequest = (BoardTilePositioningRequest)request;
+                var positioningRequest = (BoardTilePlayRequest)request;
                 if (positioningRequest.TileToConnectWith != null)
                 {
                     //relocate the tile according to the anchor point to which it was connected

@@ -56,7 +56,7 @@ namespace DominoClient
 
             DominoTile clickedDT = GetClickedDT(mousePosition);
 
-            if (!_isDragging && clickedDT != null)
+            if (!_isDragging && clickedDT != null && clickedDT.Tile.IsAvailableForSelection)
             {
                 _isDragging = true;
                 MovingElement = clickedDT;
@@ -90,9 +90,9 @@ namespace DominoClient
             if (_isDragging)
             {
                 _isDragging = false;
-                BaseCommand c = new PlayTileInBoardCommand(this, _tilePositionBeforeMove);
-                _commandsHistory.Push(c);
-                c.Execute();
+                ////BaseCommand c = new PlayTileInBoardCommand(this, _tilePositionBeforeMove);
+                //_commandsHistory.Push(c);
+                //c.Execute();
             }
         }
 
@@ -104,7 +104,8 @@ namespace DominoClient
 
         private void BtnApply_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Test");
+            PlayTileInBoardCommand c = new PlayTileInBoardCommand(this, _tilePositionBeforeMove);
+            c.Execute();
         }
 
         private void BtnUndo_Click(object sender, EventArgs e)

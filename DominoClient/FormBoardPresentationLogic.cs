@@ -156,7 +156,13 @@ namespace DominoClient
             pe.Graphics.DrawRectangle(pen, new Rectangle(ap.Position,new Size(4,4)));
         }
 
+
         #endregion Paiting methods
+
+        internal void ClearSelectedTile()
+        {
+            MovingElement = null;
+        }
 
     }
 }

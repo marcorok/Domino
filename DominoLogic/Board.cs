@@ -9,13 +9,17 @@ namespace DominoGame.GameElements
         private Player P1 { get; set; }
         private Player P2 { get; set; }
 
-        private LinkedList<Tile> BoneYard { get; set; }
+        public LinkedList<Tile> BoneYard { get; private set; }
+        public LinkedList<Tile> TilesInBoard { get; private set; }
+        public LinkedList<Tile> TilesAvailableToConnectWith { get; private set; }
 
         public Board(Player p1, Player p2)
         {
             this.P1 = p1;
             this.P2 = p2;
             BoneYard = new LinkedList<Tile>();
+            TilesInBoard = new LinkedList<Tile>();
+            TilesAvailableToConnectWith = new LinkedList<Tile>();
             InitializeGame();
         }
 
@@ -27,8 +31,21 @@ namespace DominoGame.GameElements
             DistributeTiles(P2);
         }
 
+        #region PlayTile
+        public void PlayRound(Player p, Tile t) { 
+            p.PlayTile(t);
+            TilesInBoard.AddLast(t);
+            TilesAvailableToConnectWith.AddLast(t);
+            t.IsAvailableForSelection = false;
+        }
 
-        public void PlayRound(Player p, Tile t) => throw new NotImplementedException();
+        public bool ValidatePlayRound(Player p, Tile t) {
+
+            if (TilesInBoard.Count == 0) return true;
+            return false;
+        }
+
+        #endregion
 
         /**
          * Gets a random tile from the BoneYard 
