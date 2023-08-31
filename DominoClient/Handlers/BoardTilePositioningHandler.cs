@@ -1,4 +1,5 @@
-﻿using DominoGame.GameElements;
+﻿using DominoClient.Controllers;
+using DominoGame.GameElements;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +13,7 @@ namespace DominoClient.Handlers
     {
         public override object Handle(object request)
         {
-            if(request is BoardTilePlayRequest)
+            if (request is BoardTilePlayRequest)
             {
                 var positioningRequest = (BoardTilePlayRequest)request;
                 if (positioningRequest.TileToConnectWith != null)
@@ -20,14 +21,15 @@ namespace DominoClient.Handlers
                     //relocate the tile according to the anchor point to which it was connected
                     throw new NotImplementedException();
                 }
-                else if (positioningRequest.TileToConnectWith == null && 
-                    positioningRequest.FormBoard.IsTileInBoardArea(positioningRequest.PlayedTile))
+                else if (positioningRequest.TileToConnectWith == null &&
+                    positioningRequest.BoardController.PaintElementsController.IsTileInBoardArea(positioningRequest.PlayedTile))
                 {
                     //Position tile in the center of the board
-                    Point center = new Point(positioningRequest.FormBoard.Width / 2, positioningRequest.FormBoard.Height / 2);
+                    Point center = positioningRequest.BoardController.PaintElementsController.GetBoardCenterPosition();
                     positioningRequest.PlayedTile.UpdatePositionOnMoveWithCenteredMousePoint(center);
                 }
-                else {
+                else
+                {
                     return null;
                 }
             }

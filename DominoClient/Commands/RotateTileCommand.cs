@@ -1,4 +1,5 @@
-﻿using DominoClient.GraphicElements;
+﻿using DominoClient.Controllers;
+using DominoClient.GraphicElements;
 using DominoGame.GameElements;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace DominoClient.Commands
     {
         private int _originalRotation;
 
-        public RotateTileCommand(FormBoard boardForm) : base(boardForm)
+        public RotateTileCommand(BoardController boardController, TileSelectionAndMovementController tileSelectionAndMovementController) : base(boardController, tileSelectionAndMovementController)
         {
             _originalRotation = _graphicTile.RotationAngle;
         }

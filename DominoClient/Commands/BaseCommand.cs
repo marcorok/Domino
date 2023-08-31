@@ -5,22 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DominoClient.Controllers;
 
 namespace DominoClient.Commands
 {
-    internal abstract class BaseCommand
+    public abstract class BaseCommand
     {
         protected DominoTile _graphicTile;
         protected Board _board;
         protected Player _player;
-        protected FormBoard _boardForm;
+        protected BoardController _boardController;
 
-        public BaseCommand(FormBoard boardForm)
+        public BaseCommand(BoardController  boardController, TileSelectionAndMovementController tileSelectionAndMovementController)
         {
-            _graphicTile = boardForm.MovingElement;
-            _board = boardForm.Board;
-            _player = boardForm.P1;
-            _boardForm = boardForm;
+            _graphicTile = tileSelectionAndMovementController.MovingElement;
+            _board = boardController.Board;
+            _player = boardController.Player1;
+            _boardController = boardController;
 
         }
         public abstract void Execute();

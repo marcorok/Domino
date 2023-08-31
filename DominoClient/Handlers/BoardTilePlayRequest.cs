@@ -1,4 +1,5 @@
-﻿using DominoClient.GraphicElements;
+﻿using DominoClient.Controllers;
+using DominoClient.GraphicElements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,11 @@ namespace DominoClient.Handlers
     {
         internal DominoTile PlayedTile { get; set; }
         internal DominoTile TileToConnectWith { get; set; }
-        internal FormBoard FormBoard { get; set; }
+        internal BoardController BoardController { get; set; }
+    }
+
+    internal class BoardMoveTileRequest : BoardTilePlayRequest
+    { 
+    
     }
 }

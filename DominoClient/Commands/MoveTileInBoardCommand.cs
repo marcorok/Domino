@@ -1,15 +1,21 @@
-﻿using DominoClient.Controllers;
+﻿using DominoGame.GameElements;
 using DominoClient.GraphicElements;
 using DominoClient.Handlers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Drawing;
+using DominoClient.Controllers;
 
 namespace DominoClient.Commands
 {
-    internal class PlayTileInBoardCommand : BaseCommand
+    internal class MoveTileInBoardCommand : BaseCommand
     {
         private Point _originalPosition;
 
-        public PlayTileInBoardCommand(BoardController boardController, TileSelectionAndMovementController tileSelectionAndMovementController) : base(boardController, tileSelectionAndMovementController)
+        public MoveTileInBoardCommand(BoardController boardController, TileSelectionAndMovementController tileSelectionAndMovementController) : base(boardController, tileSelectionAndMovementController)
         {
             _originalPosition = tileSelectionAndMovementController.TilePositionBeforeMove;
         }
@@ -23,21 +29,15 @@ namespace DominoClient.Commands
              *  2 - Rearrage tile in the board if needed
              *  3 - Commit changes to board
              */
-            BoardTilePlayRequest request = new BoardTilePlayRequest
+            BoardMoveTileRequest request = new BoardMoveTileRequest
             {
                 BoardController = _boardController,
                 PlayedTile = _graphicTile,
                 TileToConnectWith = null
             };
 
-            var tilePlayValidationHandler = new BoardTilePlayValidationHandler();
-            var tileApplyPlayHandler = new BoardTileApplyPlayHandler();
             var tilePositioningHandler = new BoardTilePositioningHandler();
-            var tileClearSelectionHandler = new BoardTileClearSelectionHandler();
-            var tileCreateAnchorPointsElipsis = new BoardTileCreateAnchorPointsElipsisHandler();
-            tilePlayValidationHandler.SetNext(tileApplyPlayHandler).SetNext(tilePositioningHandler).SetNext(tileClearSelectionHandler).SetNext(tileCreateAnchorPointsElipsis);
-            tilePlayValidationHandler.Handle(request);
-            
+            tilePositioningHandler.Handle(request);
         }
 
         public override void Undo() {

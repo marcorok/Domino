@@ -51,8 +51,8 @@ namespace DominoClient.GraphicElements.anchorPointsFactories
 
         private void SetUpAndDownValues(int rotationAngle, Tile tile)
         {
-            _upValue = rotationAngle == 0 ? tile.ValueA : tile.ValueB;
-            _downValue = rotationAngle == 0 ? tile.ValueB : tile.ValueA;
+            _upValue = rotationAngle == 0 ? tile.ValueA.Value : tile.ValueB.Value;
+            _downValue = rotationAngle == 0 ? tile.ValueB.Value : tile.ValueA.Value;
         }
     }
 }

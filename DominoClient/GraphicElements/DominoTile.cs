@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DominoClient.GraphicElements
 {
-    internal class DominoTile
+    public class DominoTile
     {
         internal const int INITIAL_WIDTH = 45;
         internal const int INITIAL_HEIGTH = 90;
@@ -113,6 +113,12 @@ namespace DominoClient.GraphicElements
         internal void RefreshPosition() {
             UpdateRectPosition();
             UpdateAnchorPointsPosition();
+        }
+
+        internal void CreateAnchorPointsElipsis()
+        {
+            //To be continued
+            throw new NotImplementedException();
         }
     }
 }

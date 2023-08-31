@@ -48,8 +48,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardControllerTests.cs" />
     <Compile Include="BoardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DominoClient\DominoClient.csproj">
+      <Project>{c9d7501f-4162-4b58-8d37-d5675824a62f}</Project>
+      <Name>DominoClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DominoLogic\DominoLogic.csproj">
       <Project>{a06d633c-95f9-43fa-8be3-0430131c0d2c}</Project>
       <Name>DominoLogic</Name>

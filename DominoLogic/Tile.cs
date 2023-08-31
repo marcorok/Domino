@@ -14,13 +14,13 @@ namespace DominoGame.GameElements
             get => _isAvailableForSelection;
             set => _isAvailableForSelection = _isAvailableForSelection ? value : false; }
         
-        public int ValueA { get; }
-        public int ValueB { get; }
+        public TileValue ValueA { get; }
+        public TileValue ValueB { get; }
 
         public Tile(string tileImageName, int valueA, int valueB) {
             TileImageName = tileImageName;
-            ValueA = valueA;
-            ValueB = valueB;
+            ValueA = new TileValue { Value = valueA, IsAvailableForPlaying = true };
+            ValueB = new TileValue { Value = valueB, IsAvailableForPlaying = true };
             _isAvailableForSelection = true;
         }
 
@@ -31,7 +31,12 @@ namespace DominoGame.GameElements
 
         public bool ValuesMatch()
         {
-            return ValueA == ValueB;
+            return ValueA.Value == ValueB.Value;
         }
+    }
+
+    public class TileValue {
+        public int Value { get; internal set; }
+        public bool IsAvailableForPlaying { get; internal set; }
     }
 }

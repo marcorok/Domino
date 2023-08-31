@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
+    <Compile Include="Controllers\GraphicElementsBaseController.cs" />
+    <Compile Include="Controllers\PaintElementsController.cs" />
+    <Compile Include="Controllers\TileSelectionAndMovementController.cs" />
+    <Compile Include="Handlers\BoardTileCreateAnchorPointsElipsisHandler.cs" />
+    <Compile Include="Commands\MoveTileInBoardCommand.cs" />
     <Compile Include="Commands\PlayTileInBoardCommand.cs" />
     <Compile Include="Commands\RotateTileCommand.cs" />
     <Compile Include="GraphicElements\AnchorPoint.cs" />
@@ -61,9 +67,6 @@
     <Compile Include="FormBoard.Designer.cs">
       <DependentUpon>FormBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormBoardPresentationLogic.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Handlers\AbstractHandler.cs" />
     <Compile Include="Handlers\BoardTileApplyPlayHandler.cs" />
     <Compile Include="Handlers\BoardTilePlayValidationHandler.cs" />
@@ -72,6 +75,8 @@
     <Compile Include="Handlers\BoardTileClearSelectionHandler.cs" />
     <Compile Include="Handlers\BoardTileSelectionRequest.cs" />
     <Compile Include="Handlers\IHandler.cs" />
+    <Compile Include="Helpers\FormConstants.cs" />
+    <Compile Include="Helpers\PaintLocationHelpers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBoard.resx">

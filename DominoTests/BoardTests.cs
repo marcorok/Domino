@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DominoGame.GameElements;
 using System;
+using System.Collections.Generic;
 
 namespace DominoTests
 {
@@ -36,6 +37,53 @@ namespace DominoTests
             var t = p1.GetPlayableTiles().First.Value;
             Assert.IsTrue(b.ValidatePlayRound(p1, t));
         }
+
+        [TestMethod]
+        public void Domino_CreateTiles_TilesAreCreatedWSuccess() {
+            //Arrange & Act
+            SetUpTest();
+
+            //Assert
+            //Player 1 - has 7 tiles
+            Assert.AreEqual<int>(7,p1.GetPlayableTiles().Count);
+            //Player 2 - has 7 tiles
+            Assert.AreEqual<int>(7,p2.GetPlayableTiles().Count);
+            
+            //Player 1 tiles are all available to be played
+            Assert.IsTrue(TilesAreAllAvailableForSelection(p1.GetPlayableTiles()));
+
+            //Player 2 tiles are all available to be played
+            Assert.IsTrue(TilesAreAllAvailableForSelection(p2.GetPlayableTiles()));
+
+            //P1 and P2 tiles have both values available
+            Assert.IsTrue(AllTilesHaveBothValuesAvailable(p1.GetPlayableTiles()));
+            Assert.IsTrue(AllTilesHaveBothValuesAvailable(p2.GetPlayableTiles()));
+
+            //Board is empty
+            Assert.AreEqual(0, b.TilesInBoard.Count);
+            //BoneYard is not empty
+            Assert.IsTrue(b.BoneYard.Count > 0);
+        }
+
+        private bool AllTilesHaveBothValuesAvailable(LinkedList<Tile> tiles)
+        {
+            foreach(Tile t in tiles)
+            {
+                if (!t.ValueA.IsAvailableForPlaying)
+                    return false;
+            }
+            return true;
+        }
+
+        private bool TilesAreAllAvailableForSelection(LinkedList<Tile> tiles)
+        {
+            foreach (Tile t in tiles) {
+                if (!t.IsAvailableForSelection)
+                    return false;
+            }
+            return true;
+        }
+
 
         private void SetUpTest()
         {

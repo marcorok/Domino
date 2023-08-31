@@ -51,8 +51,8 @@ namespace DominoClient.GraphicElements.AnchorPointsFactories
 
         private void SetLeftAndRigthValues(int rotationAngle, Tile tile)
         {
-            _rightSideValue = rotationAngle == 90 ? tile.ValueA : tile.ValueB;
-            _leftSideValue = rotationAngle == 90 ? tile.ValueB : tile.ValueA;
+            _rightSideValue = rotationAngle == 90 ? tile.ValueA.Value : tile.ValueB.Value;
+            _leftSideValue = rotationAngle == 90 ? tile.ValueB.Value : tile.ValueA.Value;
         }
     }
 }

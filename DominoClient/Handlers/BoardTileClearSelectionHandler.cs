@@ -14,7 +14,7 @@ namespace DominoClient.Handlers
             if (request is BoardTilePlayRequest)
             {
                 BoardTilePlayRequest selectionRequest = request as BoardTilePlayRequest;
-                selectionRequest.FormBoard.ClearSelectedTile();
+                selectionRequest.BoardController.TileSelectionAndMovementController.ClearSelectedTile();
             }
             else
             {

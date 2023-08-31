@@ -13,7 +13,7 @@ namespace DominoClient.Handlers
             if (request is BoardTilePlayRequest)
             {
                 BoardTilePlayRequest boardRequest = request as BoardTilePlayRequest;
-                if (!boardRequest.FormBoard.Board.ValidatePlayRound(boardRequest.FormBoard.P1, boardRequest.PlayedTile.Tile)) {
+                if (!boardRequest.BoardController.Board.ValidatePlayRound(boardRequest.BoardController.Player1, boardRequest.PlayedTile.Tile)) {
                     return null;
                 }
 

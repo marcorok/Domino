@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DominoClient.Handlers;
+using System;
 
-namespace DominoClient.Handlers
+namespace DominoClient.Commands
 {
-    internal class BoardTileApplyPlayHandler : AbstractHandler
+    internal class BoardTileCreateAnchorPointsElipsisHandler : AbstractHandler
     {
-
         public override object Handle(object request)
         {
             if (request is BoardTilePlayRequest)
             {
-                BoardTilePlayRequest boardRequest = request as BoardTilePlayRequest;
-                boardRequest.BoardController.Board.PlayRound(boardRequest.BoardController.Player1, boardRequest.PlayedTile.Tile);
+                (request as BoardTilePlayRequest).PlayedTile.CreateAnchorPointsElipsis();
             }
             else
             {
@@ -22,8 +17,8 @@ namespace DominoClient.Handlers
                     this.GetType().ToString(),
                     new BoardTilePlayRequest().GetType().ToString()));
             }
-
             return base.Handle(request);
         }
+           
     }
 }

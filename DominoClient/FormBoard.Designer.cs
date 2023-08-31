@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DominoClient.Helpers;
+using System;
 using System.Windows.Forms;
 
 namespace DominoClient
@@ -9,7 +10,7 @@ namespace DominoClient
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private readonly int _topControlsPanelHeight = 30;
+        
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -45,7 +46,7 @@ namespace DominoClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 761);
+            this.ClientSize = new System.Drawing.Size(FormConstants.FormSize.Width, FormConstants.FormSize.Height);
             this.DoubleBuffered = true;
             this.Name = "FormBoard";
             this.Text = "Domino";
@@ -63,7 +64,7 @@ namespace DominoClient
             //Top button bar
             FlowLayoutPanel flp = new FlowLayoutPanel();
             flp.FlowDirection = FlowDirection.RightToLeft;
-            flp.Height = _topControlsPanelHeight;
+            flp.Height = FormConstants.TopControlsPanelHeight;
             flp.Width = this.ClientSize.Width;
             //Apply btn
             Button btnApply = new Button();
